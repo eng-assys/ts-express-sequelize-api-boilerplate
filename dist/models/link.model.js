@@ -1,16 +1,13 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});var _sequelize = require('sequelize');
 var _database = require('../config/database');
 
-
  class Link extends _sequelize.Model {
   
   
   
-  // timestamps!
   
   
 } exports.Link = Link;
-
 
 
 
@@ -39,4 +36,4 @@ Link.init(
   }
 )
 
-// Link.sync({ force: true }).then(() => console.log("Link table created"))
+Link.sync({ force: true }).then(() => console.log("Link table created"))
