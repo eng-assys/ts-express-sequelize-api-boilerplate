@@ -1,6 +1,6 @@
-import * as express from "express"
-import cors from 'cors'
-import { Routes } from "./config/routes"
+import express = require('express')
+import cors = require ('cors')
+import { Routes } from './config/routes'
 
 class App {
   public app: express.Application
