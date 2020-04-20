@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  seqboilerplate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: seqboilerplate
+    container_name: seqboilerplate
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - API_VERSION=$API_VERSION
+      - PORT=$PORT
+      - DB_DATABASE=$DB_DATABASE
+      - DB_USERNAME=$DB_USERNAME
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_DIALECT=$DB_DIALECT
+      - DOCKER_START_COMMAND=$DOCKER_START_COMMAND
+    ports:
+      - $PORT:3002
+    volumes:
+      - .:/home/node/seqboilerplate
+      - "./node_modules:/home/node/seqboilerplate/node_modules"
+    networks:
+      - seqboilerplate-network
+    command: $DOCKER_START_COMMAND
+
+networks:
+  seqboilerplate-network:
+    driver: bridge
+
