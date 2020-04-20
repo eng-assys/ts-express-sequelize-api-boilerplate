@@ -43,4 +43,4 @@ Node.hasMany(_linkmodel.Link, {
   as: "nextLinks"
 })
 
-Node.sync({ force: true }).then(() => console.log("Node table created"))
+// Node.sync({ force: true }).then(() => console.log("Node table created"))

@@ -4,7 +4,6 @@ var _noderepository = require('../repositories/node.repository');
 
  class NodeController extends _basecontroller.BaseController {
   constructor () {
-    const repository = new (0, _noderepository.NodeRepository)()
-    super(repository)
+    super(new (0, _noderepository.NodeRepository)())
   }
 } exports.NodeController = NodeController;

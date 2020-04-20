@@ -4,53 +4,53 @@
 
   
 
-  constructor(repository){
+  constructor(repository){;BaseController.prototype.__init.call(this);BaseController.prototype.__init2.call(this);BaseController.prototype.__init3.call(this);BaseController.prototype.__init4.call(this);BaseController.prototype.__init5.call(this);
     this._repository = repository
   }
 
-  async index(req, res) {
+   __init() {this.index = async (req, res) => {
     try {
       const params = req.params
       const response = await this._repository.find(params)
       return res.json(response)
     } catch (error) {
-      res.status(500).json(error)
+      res.status(500).json({ errors: error })
     }
-  }
+  }}
 
-  async show(req, res) {
+   __init2() {this.show = async (req, res) => {
     try {
       const response = await this._repository.findOne(req.params.id)
       return res.json(response)
     } catch (error) {
-      res.status(404).json({ errors: ["Not found"] })
+      res.status(404).json({ message: ["Not found"], errors: error })
     }
-  }
+  }}
 
-  async store(req, res) {
+   __init3() {this.store = async (req, res) => {
     try {
       const response = await this._repository.create(req.body)      
       return res.status(201).json(response)
     } catch (error) {
-      res.status(500).json(error)
+      res.status(500).json({ errors: error })
     }
-  }
+  }}
 
-  async update(req, res) {
+   __init4() {this.update = async (req, res) => {
     try {
       const response = await this._repository.update(req.params.id, req.body)
       return res.json(response)
     } catch (error) {
-      res.status(500).json(error)
+      res.status(500).json({ errors: error })
     }
-  }
+  }}
 
-  async delete(req, res) {
+   __init5() {this.delete = async (req, res) => {
     try {
       const response = await this._repository.delete(req.params.id, req.body)
       return res.json(response)
     } catch (error) {
-      res.status(500).json(error)
+      res.status(500).json({ errors: error })
     }
-  }
+  }}
 } exports.BaseController = BaseController;

@@ -36,4 +36,4 @@ Link.init(
   }
 )
 
-Link.sync({ force: true }).then(() => console.log("Link table created"))
+// Link.sync({ force: true }).then(() => console.log("Link table created"))
