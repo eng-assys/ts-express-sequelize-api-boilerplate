@@ -8,49 +8,49 @@ export abstract class BaseController {
     this._repository = repository
   }
 
-  async index(req: Request, res: Response): Promise<Response> {
+  public index = async (req: Request, res: Response): Promise<Response> => {
     try {
       const params = req.params
       const response = await this._repository.find(params)
       return res.json(response)
     } catch (error) {
-      res.status(500).json(error)
+      res.status(500).json({ errors: error })
     }
   }
 
-  async show(req: Request, res: Response): Promise<Response> {
+  public show = async (req: Request, res: Response): Promise<Response> => {
     try {
       const response = await this._repository.findOne(req.params.id)
       return res.json(response)
     } catch (error) {
-      res.status(404).json({ errors: ["Not found"] })
+      res.status(404).json({ message: ["Not found"], errors: error })
     }
   }
 
-  async store(req: Request, res: Response): Promise<Response> {
+  public store = async (req: Request, res: Response): Promise<Response> => {
     try {
-      const response = await this._repository.create(req.body)
+      const response = await this._repository.create(req.body)      
       return res.status(201).json(response)
     } catch (error) {
-      res.status(500).json(error)
+      res.status(500).json({ errors: error })
     }
   }
 
-  async update(req: Request, res: Response): Promise<Response> {
+  public update = async (req: Request, res: Response): Promise<Response> => {
     try {
       const response = await this._repository.update(req.params.id, req.body)
       return res.json(response)
     } catch (error) {
-      res.status(500).json(error)
+      res.status(500).json({ errors: error })
     }
   }
 
-  async delete(req: Request, res: Response): Promise<Response> {
+  public delete = async (req: Request, res: Response): Promise<Response> => {
     try {
       const response = await this._repository.delete(req.params.id, req.body)
       return res.json(response)
     } catch (error) {
-      res.status(500).json(error)
+      res.status(500).json({ errors: error })
     }
   }
 }
